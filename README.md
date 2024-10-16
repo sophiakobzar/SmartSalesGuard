@@ -29,5 +29,3 @@ SalesAnomalyDetection is a project aimed at detecting anomalies in sales data to
 Install required Python packages:
 ```bash
    pip install -r requirements.txt
-
-
