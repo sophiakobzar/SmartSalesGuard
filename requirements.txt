@@ -1,0 +1,15 @@
+pandas
+numpy
+scikit-learn
+azureml-core
+azureml-sdk
+azureml-dataprep
+azureml-train
+azureml-train-automl
+azureml-pipeline
+azureml-dataset-runtime
+psycopg2-binary
+sqlalchemy
+jupyter
+matplotlib
+seaborn
