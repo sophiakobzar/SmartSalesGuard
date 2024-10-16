@@ -17,6 +17,7 @@ SmartSalesGuard is a project aimed at detecting anomalies in sales data to ident
 ### Prerequisites
 - Azure account
 - Kaggle account
+- Microsoft Fabric
 - Python 3.x
 - Azure CLI
 - Azure Data Factory
