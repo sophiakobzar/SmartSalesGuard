@@ -1,7 +1,7 @@
 # SmartSalesGuard
 
 ## Project Overview
-SalesAnomalyDetection is a project aimed at detecting anomalies in sales data to identify unusual patterns or potential fraud for an online Super Store. This project leverages Microsoft Fabric and Azure OpenAI services to process and analyze data, providing real-time insights and anomaly detection.
+SmartSalesGuard is a project aimed at detecting anomalies in sales data to identify unusual patterns or potential fraud for an online Super Store. This project leverages Microsoft Fabric and Azure OpenAI services to process and analyze data, providing real-time insights and anomaly detection.
 
 ## Features
 - **Data Collection**: Import sales data from Kaggle into Azure Database for PostgreSQL.
@@ -24,8 +24,8 @@ SalesAnomalyDetection is a project aimed at detecting anomalies in sales data to
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/SalesAnomalyDetection.git
-   cd SalesAnomalyDetection
+   git clone https://github.com/sophiakobzar/SmartSalesGuard.git
+   cd SmartSalesGuard
 Install required Python packages:
 ```bash
    pip install -r requirements.txt
