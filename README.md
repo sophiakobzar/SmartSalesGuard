@@ -26,6 +26,7 @@ SmartSalesGuard is a project aimed at detecting anomalies in sales data to ident
    ```bash
    git clone https://github.com/sophiakobzar/SmartSalesGuard.git
    cd SmartSalesGuard
+
 ### Install required Python packages:
 ```bash
-   pip install -r requirements.txt
+pip install -r requirements.txt
