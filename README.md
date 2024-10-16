@@ -19,7 +19,7 @@ SmartSalesGuard is a project aimed at detecting anomalies in sales data to ident
 - Kaggle account
 - Python 3.x
 - Azure CLI
-- pgAdmin or Azure Data Factory
+- Azure Data Factory
 
 ### Clone Git repo: 
 ```bash
