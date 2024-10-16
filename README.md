@@ -20,9 +20,3 @@ SalesAnomalyDetection is a project aimed at detecting anomalies in sales data to
 - Python 3.x
 - Azure CLI
 - pgAdmin or Azure Data Factory
-
-### Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/SalesAnomalyDetection.git
-   cd SalesAnomalyDetection
