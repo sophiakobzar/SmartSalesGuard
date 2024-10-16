@@ -21,7 +21,7 @@ SmartSalesGuard is a project aimed at detecting anomalies in sales data to ident
 - Azure CLI
 - pgAdmin or Azure Data Factory
 
-### Clone Git repo 
+### Clone Git repo: 
 1. Clone the repository:
    ```bash
    git clone https://github.com/sophiakobzar/SmartSalesGuard.git
