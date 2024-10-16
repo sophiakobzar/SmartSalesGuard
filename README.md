@@ -27,5 +27,7 @@ SalesAnomalyDetection is a project aimed at detecting anomalies in sales data to
    git clone https://github.com/yourusername/SalesAnomalyDetection.git
    cd SalesAnomalyDetection
 Install required Python packages:
-pip install -r requirements.txt
+```bash
+   pip install -r requirements.txt
+
 
