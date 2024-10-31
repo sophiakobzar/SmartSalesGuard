@@ -1,5 +1,6 @@
 import os
 from openai import AzureOpenAI
+import json
 
 # Ensure your environment variables are set correctly
 ENDPOINT = os.getenv('AZURE_OPENAI_ENDPOINT')
@@ -29,4 +30,11 @@ completion = client.chat.completions.create(
     messages=MESSAGES,
 )
 
-print(completion.model_dump_json(indent=2))
+# Convert the completion object to a dictionary
+completion_dict = completion.model_dump()
+
+# Save the JSON response to a file
+with open('completion_response.json', 'w') as json_file:
+    json.dump(completion_dict, json_file, indent=2)
+
+print("JSON response saved to completion_response.json")
