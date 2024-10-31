@@ -42,3 +42,8 @@ cd SmartSalesGuard
 ```bash
 pip install pandas re openai
 ```
+
+### Run the code:
+```bash
+python SDKtest.py
+```
