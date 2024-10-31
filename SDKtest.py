@@ -32,3 +32,10 @@ completion = client.chat.completions.create(
 )
 
 print(completion.model_dump_json(indent=2))
+
+
+export AZURE_OPENAI_API_KEY="REPLACE_WITH_YOUR_KEY_VALUE_HERE"
+export AZURE_OPENAI_ENDPOINT="REPLACE_WITH_YOUR_ENDPOINT_HERE"
+
+ENDPOINT = os.getenv('AZURE_OPENAI_ENDPOINT')
+API_KEY = os.getenv('AZURE_OPENAI_API_KEY')
