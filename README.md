@@ -20,6 +20,19 @@ SmartSalesGuard is a project aimed at detecting anomalies in sales data to ident
 - Microsoft Fabric
 - Python 3.x
 
+### Set Environment Variables
+Run the following commands to set your environment variables:
+```bash
+export AZURE_OPENAI_API_KEY="REPLACE_WITH_YOUR_KEY_VALUE_HERE"
+export AZURE_OPENAI_ENDPOINT="REPLACE_WITH_YOUR_ENDPOINT_HERE"
+```
+
+To check if the variables are correctly set, run:
+```bash
+echo $AZURE_OPENAI_API_KEY
+echo $AZURE_OPENAI_ENDPOINT
+```
+
 ### Clone Git repo: 
 ```bash
 git clone https://github.com/sophiakobzar/SmartSalesGuard.git
