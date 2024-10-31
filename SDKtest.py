@@ -1,14 +1,12 @@
 import os
 from openai import AzureOpenAI
 
-ENDPOINT = "https://mango-bush-0a9e12903.5.azurestaticapps.net/api/v1"
-API_KEY = "<YOUR_API_KEY>"
-
-print(f"API Key: {API_KEY}")
-print(f"Endpoint: {ENDPOINT}")
+# Ensure your environment variables are set correctly
+ENDPOINT = os.getenv('AZURE_OPENAI_ENDPOINT')
+API_KEY = os.getenv('AZURE_OPENAI_API_KEY')
 
 API_VERSION = "2024-02-01"
-MODEL_NAME = "gpt-35-turbo"
+MODEL_NAME = "gpt-4-turbo-2024-04-09"  # Updated model name
 
 client = AzureOpenAI(
     azure_endpoint=ENDPOINT,
@@ -32,10 +30,3 @@ completion = client.chat.completions.create(
 )
 
 print(completion.model_dump_json(indent=2))
-
-
-export AZURE_OPENAI_API_KEY="REPLACE_WITH_YOUR_KEY_VALUE_HERE"
-export AZURE_OPENAI_ENDPOINT="REPLACE_WITH_YOUR_ENDPOINT_HERE"
-
-ENDPOINT = os.getenv('AZURE_OPENAI_ENDPOINT')
-API_KEY = os.getenv('AZURE_OPENAI_API_KEY')
