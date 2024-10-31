@@ -1,9 +1,0 @@
-run the following command in 
-
-export AZURE_OPENAI_API_KEY="REPLACE_WITH_YOUR_KEY_VALUE_HERE"
-export AZURE_OPENAI_ENDPOINT="REPLACE_WITH_YOUR_ENDPOINT_HERE"
-
-to check if the variables are correctly set do 
-
-echo $AZURE_OPENAI_API_KEY
-echo $AZURE_OPENAI_ENDPOINT
