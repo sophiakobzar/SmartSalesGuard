@@ -19,8 +19,6 @@ SmartSalesGuard is a project aimed at detecting anomalies in sales data to ident
 - Kaggle account
 - Microsoft Fabric
 - Python 3.x
-- Azure CLI
-- Azure Data Factory
 
 ### Clone Git repo: 
 ```bash
@@ -29,5 +27,5 @@ cd SmartSalesGuard
 ```
 ### Install required Python packages:
 ```bash
-pip install -r requirements.txt
+pip install pandas re openai
 ```
