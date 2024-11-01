@@ -58,8 +58,8 @@
         .user-message .message-content {
             background-color: #4caf50;
         }
-        .chat-footer input {
-            width: calc(100% - 60px);
+        .chat-footer input, .chat-footer select {
+            width: calc(100% - 120px);
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
@@ -87,55 +87,46 @@
             <!-- Chat messages will appear here -->
         </div>
         <div class="chat-footer">
-            <input type="text" id="user-input" placeholder="Type your message here..." />
+            <input type="text" id="apiKey" placeholder="Enter API Key..."/>
+            <input type="text" id="endpoint" placeholder="Enter Endpoint..."/>
+            <select id="analysisType">
+                <option value="">Select Analysis Type...</option>
+                <option value="anomaly">Anomaly Detection</option>
+                <option value="forecast">Predictive Forecasting</option>
+            </select>
             <button id="send-button">Send</button>
         </div>
     </div>
 
-<script>
-    const sendButton = document.getElementById('send-button');
-    const userInput = document.getElementById('user-input');
-    const chatMessages = document.getElementById('chat-messages');
+    <script>
+        const sendButton = document.getElementById('send-button');
+        const apiKeyInput = document.getElementById('apiKey');
+        const endpointInput = document.getElementById('endpoint');
+        const analysisTypeInput = document.getElementById('analysisType');
+        const chatMessages = document.getElementById('chat-messages');
 
-    let apiKey = '';
-    let endpoint = '';
-    let analysisType = '';
+        sendButton.addEventListener('click', () => {
+            const apiKey = apiKeyInput.value;
+            const endpoint = endpointInput.value;
+            const analysisType = analysisTypeInput.value;
+            
+            // Ensure all fields are filled
+            if (apiKey && endpoint && analysisType) {
+                // Display user message
+                const userMessageElement = document.createElement('div');
+                userMessageElement.classList.add('chat-message', 'user-message');
+                userMessageElement.innerHTML = `<div class="message-content">Requesting ${analysisType} with provided details.</div>`;
+                chatMessages.appendChild(userMessageElement);
+                
+                // Placeholder for bot response
+                const botMessageElement = document.createElement('div');
+                botMessageElement.classList.add('chat-message', 'bot-message');
+                botMessageElement.innerHTML = `<div class="message-content">Processing your request...</div>`;
+                chatMessages.appendChild(botMessageElement);
 
-    sendButton.addEventListener('click', () => {
-        const userMessage = userInput.value;
-        if (userMessage) {
-            // Display user message
-            const userMessageElement = document.createElement('div');
-            userMessageElement.classList.add('chat-message', 'user-message');
-            userMessageElement.innerHTML = `<div class="message-content">${userMessage}</div>`;
-            chatMessages.appendChild(userMessageElement);
+                // Scroll to the latest message
+                chatMessages.scrollTop = chatMessages.scrollHeight;
 
-            // Placeholder for bot response
-            const botMessageElement = document.createElement('div');
-            botMessageElement.classList.add('chat-message', 'bot-message');
-            botMessageElement.innerHTML = `<div class="message-content">Processing your request...</div>`;
-            chatMessages.appendChild(botMessageElement);
-
-            // Scroll to the latest message
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            // Reset input field
-            userInput.value = '';
-
-            // Check what the user message is about
-            if (userMessage.toLowerCase().includes('api key')) {
-                apiKey = userMessage.split(' ').pop(); // Assumes the API key is the last word
-                botMessageElement.innerHTML = `<div class="message-content">Got your API key!</div>`;
-            } else if (userMessage.toLowerCase().includes('endpoint')) {
-                endpoint = userMessage.split(' ').pop(); // Assumes the endpoint is the last word
-                botMessageElement.innerHTML = `<div class="message-content">Got your endpoint!</div>`;
-            } else if (userMessage.toLowerCase().includes('anomaly')) {
-                analysisType = 'anomaly';
-                botMessageElement.innerHTML = `<div class="message-content">Anomaly detection it is!</div>`;
-            } else if (userMessage.toLowerCase().includes('forecast')) {
-                analysisType = 'forecast';
-                botMessageElement.innerHTML = `<div class="message-content">Forecasting future sales!</div>`;
-            } else if (apiKey && endpoint && analysisType) {
                 // Send data to the server and get response
                 fetch('http://127.0.0.1:5000/analyze', {
                     method: 'POST',
@@ -151,15 +142,22 @@
                 .catch(error => {
                     botMessageElement.innerHTML = `<div class="message-content">Error: ${error}</div>`;
                 });
+
+                // Clear the input fields
+                apiKeyInput.value = '';
+                endpointInput.value = '';
+                analysisTypeInput.value = '';
             } else {
-                botMessageElement.innerHTML = `<div class="message-content">Please provide the API key, endpoint, and analysis type.</div>`;
+                // Display error message for missing inputs
+                const errorMessageElement = document.createElement('div');
+                errorMessageElement.classList.add('chat-message', 'bot-message');
+                errorMessageElement.innerHTML = `<div class="message-content">Please fill in all fields.</div>`;
+                chatMessages.appendChild(errorMessageElement);
+                
+                // Scroll to the latest message
+                chatMessages.scrollTop = chatMessages.scrollHeight;
             }
-
-            // Scroll to the latest message
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-    });
-</script>
-
+        });
+    </script>
 </body>
 </html>
