@@ -19,6 +19,7 @@ SmartSalesGuard is a project aimed at detecting anomalies in sales data to ident
 - Kaggle account
 - Microsoft Fabric
 - Python 3.x
+- Git Bash
 
 ### Set Environment Variables
 Run the following commands to set your environment variables:
