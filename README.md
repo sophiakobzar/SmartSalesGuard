@@ -43,7 +43,7 @@ cd SmartSalesGuard
 pip install pandas re openai flask
 ```
 
-## Run website or code the code will give you the response in the json but website gives you a chat bot
+## Deploy the website or run the code
 
 ### Run the Website:
 ```bash
