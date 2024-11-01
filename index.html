@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analysis Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .chat-header, .chat-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chat-header {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .chat-messages {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .chat-message {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .user-message {
+            justify-content: flex-end;
+        }
+        .bot-message {
+            justify-content: flex-start;
+        }
+        .message-content {
+            max-width: 70%;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #007bff;
+            color: white;
+        }
+        .user-message .message-content {
+            background-color: #4caf50;
+        }
+        .chat-footer input {
+            width: calc(100% - 60px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .chat-footer button {
+            width: 50px;
+            padding: 10px;
+            border: none;
+            background: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .chat-footer button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="chat-header">
+            <h2>Data Analysis Chatbot</h2>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <!-- Chat messages will appear here -->
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="user-input" placeholder="Type your message here..." />
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+
+<script>
+    const sendButton = document.getElementById('send-button');
+    const userInput = document.getElementById('user-input');
+    const chatMessages = document.getElementById('chat-messages');
+
+    let apiKey = '';
+    let endpoint = '';
+    let analysisType = '';
+
+    sendButton.addEventListener('click', () => {
+        const userMessage = userInput.value;
+        if (userMessage) {
+            // Display user message
+            const userMessageElement = document.createElement('div');
+            userMessageElement.classList.add('chat-message', 'user-message');
+            userMessageElement.innerHTML = `<div class="message-content">${userMessage}</div>`;
+            chatMessages.appendChild(userMessageElement);
+
+            // Placeholder for bot response
+            const botMessageElement = document.createElement('div');
+            botMessageElement.classList.add('chat-message', 'bot-message');
+            botMessageElement.innerHTML = `<div class="message-content">Processing your request...</div>`;
+            chatMessages.appendChild(botMessageElement);
+
+            // Scroll to the latest message
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Reset input field
+            userInput.value = '';
+
+            // Check what the user message is about
+            if (userMessage.toLowerCase().includes('api key')) {
+                apiKey = userMessage.split(' ').pop(); // Assumes the API key is the last word
+                botMessageElement.innerHTML = `<div class="message-content">Got your API key!</div>`;
+            } else if (userMessage.toLowerCase().includes('endpoint')) {
+                endpoint = userMessage.split(' ').pop(); // Assumes the endpoint is the last word
+                botMessageElement.innerHTML = `<div class="message-content">Got your endpoint!</div>`;
+            } else if (userMessage.toLowerCase().includes('anomaly')) {
+                analysisType = 'anomaly';
+                botMessageElement.innerHTML = `<div class="message-content">Anomaly detection it is!</div>`;
+            } else if (userMessage.toLowerCase().includes('forecast')) {
+                analysisType = 'forecast';
+                botMessageElement.innerHTML = `<div class="message-content">Forecasting future sales!</div>`;
+            } else if (apiKey && endpoint && analysisType) {
+                // Send data to the server and get response
+                fetch('http://127.0.0.1:5000/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ apiKey, endpoint, analysisType }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    botMessageElement.innerHTML = `<div class="message-content">${data.content}</div>`;
+                })
+                .catch(error => {
+                    botMessageElement.innerHTML = `<div class="message-content">Error: ${error}</div>`;
+                });
+            } else {
+                botMessageElement.innerHTML = `<div class="message-content">Please provide the API key, endpoint, and analysis type.</div>`;
+            }
+
+            // Scroll to the latest message
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    });
+</script>
+
+</body>
+</html>
