@@ -40,7 +40,7 @@ cd SmartSalesGuard
 ```
 ### Install required Python packages:
 ```bash
-pip install pandas re openai
+pip install pandas re openai flask
 ```
 
 ### Run the code:
