@@ -43,7 +43,16 @@ cd SmartSalesGuard
 pip install pandas re openai flask
 ```
 
-### Run the code:
+##Run website or code the code will give you the response in the json but website gives you a chat bot
+
+### Run the Website:
 ```bash
-python SDKtest.py
+python server.py
 ```
+then go to http://127.0.0.1:5000 to view website
+
+### Run Code:
+```bash
+python SmartSalesGuard_Analysis.py
+```
+
