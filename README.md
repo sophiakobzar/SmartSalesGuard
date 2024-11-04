@@ -21,19 +21,6 @@ SmartSalesGuard is a project aimed at detecting anomalies in sales data to ident
 - Python 3.x
 - Git Bash
 
-### Set Environment Variables
-Run the following commands to set your environment variables:
-```bash
-export AZURE_OPENAI_API_KEY="REPLACE_WITH_YOUR_KEY_VALUE_HERE"
-export AZURE_OPENAI_ENDPOINT="REPLACE_WITH_YOUR_ENDPOINT_HERE"
-```
-
-To check if the variables are correctly set, run:
-```bash
-echo $AZURE_OPENAI_API_KEY
-echo $AZURE_OPENAI_ENDPOINT
-```
-
 ### Clone Git repo: 
 ```bash
 git clone https://github.com/sophiakobzar/SmartSalesGuard.git
@@ -45,16 +32,11 @@ pip install pandas re openai flask
 ```
 
 
-## Deploy the website or run the code
+## Deploy the website
 
 ### Run the Website:
 ```bash
 python server.py
 ```
 then go to http://127.0.0.1:5000 to view website
-
-### Run Code:
-```bash
-python SmartSalesGuard_Analysis.py
-```
 
