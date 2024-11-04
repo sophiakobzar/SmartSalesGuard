@@ -41,6 +41,7 @@
         .chat-message {
             display: flex;
             margin-bottom: 10px;
+            word-wrap: break-word;
         }
         .user-message {
             justify-content: flex-end;
@@ -54,6 +55,9 @@
             border-radius: 10px;
             background-color: #007bff;
             color: white;
+            white-space: pre-wrap; /* Ensures text wraps and preserves new lines */
+            word-break: break-word; /* Ensures long words break to fit within the box */
+            overflow-wrap: break-word; /* Ensures text wraps within the box */
         }
         .user-message .message-content {
             background-color: #4caf50;
@@ -76,12 +80,20 @@
         .chat-footer button:hover {
             background: #0056b3;
         }
-		 .logo {
+        .logo {
             position: absolute;
             top: 10px;
             right: 10px;
             width: 100px; /* Adjust the width as needed */
         }
+		.bubble {
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			margin-top: 20px;
+		}
+
     </style>
 </head>
 <body>
@@ -89,9 +101,7 @@
         <div class="chat-header">
             <h2>Data Analysis Chatbot</h2>
         </div>
-		<body>
-			<img src="logo.png" alt="Logo" class="logo">
-		</body>
+        <img src="logo.png" alt="Logo" class="logo">
         <div class="chat-messages" id="chat-messages">
             <!-- Chat messages will appear here -->
         </div>
@@ -106,6 +116,12 @@
             <button id="send-button">Send</button>
         </div>
     </div>
+	<div class="chat-footer bubble">
+		<p>This website allows users to perform data analysis using Azure OpenAI services. 
+		You can choose between anomaly detection and predictive forecasting by providing the necessary API key and endpoint. 
+		The chatbot will process your request and return the analysis results based on the predefined dataset, 'SuperStore Sales DataSet.csv'.</p>
+	</div>
+
 
     <script>
         const sendButton = document.getElementById('send-button');
@@ -146,7 +162,7 @@
                 })
                 .then(response => response.json())
                 .then(data => {
-                    botMessageElement.innerHTML = `<div class="message-content">${data.content}</div>`;
+                    botMessageElement.innerHTML = `<div class="message-content">${data.content.replace(/\n/g, '<br>')}</div>`;
                 })
                 .catch(error => {
                     botMessageElement.innerHTML = `<div class="message-content">Error: ${error}</div>`;
