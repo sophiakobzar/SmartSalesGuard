@@ -28,7 +28,7 @@ cd SmartSalesGuard
 ```
 ### Install required Python packages:
 ```bash
-pip install pandas re openai flask
+pip install pandas re openai flask statsmodels
 ```
 
 
