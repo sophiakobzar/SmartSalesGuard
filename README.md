@@ -19,6 +19,7 @@ SmartSalesGuard is a project aimed at detecting anomalies in sales data to ident
 - Kaggle account
 - Microsoft Fabric
 - Python 3.x
+- Git Bash
 
 ### Set Environment Variables
 Run the following commands to set your environment variables:
@@ -40,10 +41,20 @@ cd SmartSalesGuard
 ```
 ### Install required Python packages:
 ```bash
-pip install pandas re openai
+pip install pandas re openai flask
 ```
 
-### Run the code:
+
+## Deploy the website or run the code
+
+### Run the Website:
 ```bash
-python SDKtest.py
+python server.py
 ```
+then go to http://127.0.0.1:5000 to view website
+
+### Run Code:
+```bash
+python SmartSalesGuard_Analysis.py
+```
+
