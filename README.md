@@ -40,3 +40,10 @@ python server.py
 ```
 then go to http://127.0.0.1:5000 to view website
 
+## Check out video Demo
+```bash
+https://youtu.be/C_cgtCmLc0o
+```
+
+
+
