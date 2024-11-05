@@ -12,12 +12,13 @@
             padding: 20px;
         }
         .container {
-            max-width: 600px;
-            margin: auto;
+            max-width: 600px;  
             background: #fff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			width: 100%;
+			margin: 0 auto;
         }
         .chat-header, .chat-footer {
             display: flex;
@@ -62,8 +63,7 @@
         .user-message .message-content {
             background-color: #4caf50;
         }
-        .chat-footer input, .chat-footer select {
-            width: calc(100% - 120px);
+        .chat-footer input, .chat-footer select {            
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
@@ -86,14 +86,15 @@
             right: 10px;
             width: 100px; /* Adjust the width as needed */
         }
-        .bubble {
-			background-color: #fff;
+        .bubble {				
+			max-width: 600px;  
+			background: #fff;
 			padding: 20px;
 			border-radius: 10px;
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-			margin-top: 20px;
-			max-width: 100%; /* Ensure the footer does not exceed the container width */
-			box-sizing: border-box; /* Include padding and border in the element's total width and height */
+			width: 100%;
+			margin: 20px auto;
+			font-size: 10px; /* Adjust the font size as needed */
 		}
     </style>
 </head>
@@ -117,7 +118,7 @@
             <button id="send-button">Send</button>
         </div>
     </div>
-	<div class="chat-footer bubble">
+	<div class="bubble">
 		<p>This website allows users to perform data analysis using Azure OpenAI services. 
 		You can choose between anomaly detection and predictive forecasting by providing the necessary API key and endpoint. 
 		The chatbot will process your request and return the analysis results based on the predefined dataset, 'SuperStore Sales DataSet.csv'.</p>
