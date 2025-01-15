@@ -25,4 +25,4 @@ jobs:
 
     - name: Run Flask app
       run: |
-        python server.py
+        nohup python server.py &
